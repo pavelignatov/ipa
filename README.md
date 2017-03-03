@@ -1,5 +1,5 @@
 ##Short description
-######The project is an example which contains spring and react/redux technologies as well might be useful as boilerplate template.
+######The project is an example which contains spring and react/redux technologies as well might be useful as a boilerplate project.
 ##What is there
 * Spring boot
 * Gradle
