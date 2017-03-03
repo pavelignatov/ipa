@@ -1,0 +1,67 @@
+buildscript {
+    ext {
+        slf4jVersion = '1.7.22'
+        logbackVersion = '1.2.1'
+        springBootVersion = '1.5.1.RELEASE'
+        hazelcastVersion = '3.8'
+    }
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath('org.springframework:springloaded:1.2.6.RELEASE')
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    idea {
+        module {
+            inheritOutputDirs = false
+            outputDir = file("$buildDir/classes/main/")
+        }
+    }
+
+    configurations {
+        all*.exclude group: "commons-logging", module: "commons-logging"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile "org.projectlombok:lombok:1.16.12"
+        compile group: 'com.google.guava', name: 'guava', version: '21.0'
+        compile "org.slf4j:jcl-over-slf4j:$slf4jVersion"
+        compile "org.slf4j:jul-to-slf4j:$slf4jVersion"
+        compile("org.springframework.boot:spring-boot-devtools")
+
+        compile("org.modelmapper:modelmapper:0.7.5")
+        compile("ch.qos.logback:logback-classic:$logbackVersion")
+
+        compile "javax.cache:cache-api:1.0.0" //JSR-107 java cache standard
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}

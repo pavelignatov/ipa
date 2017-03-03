@@ -1,0 +1,57 @@
+buildscript {
+    ext {
+        querydslVersion = '4.1.3'
+        slf4jVersion = '1.7.22'
+        logbackVersion = '1.2.1'
+
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins { id "io.spring.dependency-management" version "1.0.0.RELEASE" }
+apply plugin: 'java'
+apply plugin: 'idea'
+
+idea {
+    module {
+        sourceDirs += file('generated-sources/generated')
+        generatedSourceDirs += file('generated-sources/generated')
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    baseName = 'ipa-database'
+    version =  '0.1.0'
+}
+
+dependencies {
+
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.springframework:spring-jdbc")
+
+    compile("org.springframework.boot:spring-boot-starter-security")
+
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+    compile group: 'org.postgresql', name: 'postgresql', version: '9.4.1212.jre7'
+    compile group: 'org.hsqldb', name: 'hsqldb', version: '2.3.4'
+
+    compile('com.querydsl:querydsl-jpa:4.1.3')
+    compile('com.querydsl:querydsl-apt:4.1.3:jpa')
+
+    testCompile("junit:junit")
+}
+
+dependencyManagement {
+    imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
+}
+
+clean {
+    delete file('generated-sources/generated')
+}

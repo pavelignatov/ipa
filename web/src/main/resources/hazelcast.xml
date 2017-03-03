@@ -1,0 +1,17 @@
+<hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.8.xsd"
+           xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <map name="test">
+        <time-to-live-seconds>60</time-to-live-seconds>
+        <max-size>3</max-size>
+    </map>
+
+    <cache name="test">
+        <eviction size="3"/>
+
+        <statistics-enabled>true</statistics-enabled>
+        <management-enabled>true</management-enabled>
+    </cache>
+
+</hazelcast>

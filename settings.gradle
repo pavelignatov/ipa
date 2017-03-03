@@ -1,0 +1,5 @@
+rootProject.name = 'ipa'
+include 'database'
+include 'web'
+include 'hazelcast-server'
+include 'frontend'

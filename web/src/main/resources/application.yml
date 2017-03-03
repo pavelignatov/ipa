@@ -1,0 +1,29 @@
+server:
+  port: 9000
+
+datasource:
+  postgres:
+    embedded: true
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/ipa-web
+    username: postgres
+    password: 1
+    type: org.postgresql.ds.PGPoolingDataSource
+
+  mysql:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.6.119:4040/db
+    username: username
+    password: password
+    platform: mysql
+    type: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+
+logging:
+  level:
+    com.ipa: TRACE
+
+spring:
+  cache:
+    type: hazelcast
+    hazelcast:
+      config: hazelcast.xml

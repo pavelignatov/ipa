@@ -1,0 +1,11 @@
+/.idea
+/logs
+/out
+/build
+/classes
+/database/build
+/database/generated-sources/
+/hazelcast-server/build
+/web/build
+database/src/main/generated/
+frontend/node_modules/
